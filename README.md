@@ -139,5 +139,8 @@ After deploying to a non-local environment, confirm the following:
 
 ## Changelog
 
+= 1.0.1 =
+* Moved admin_bar_menu hook outside is_admin() guard so the Edit Site node is removed from the admin bar on frontend views, not only in the admin
+
 = 1.0.0 =
 * Initial release

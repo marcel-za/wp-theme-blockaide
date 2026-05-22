@@ -20,9 +20,12 @@ function wptba_lock_fse_on_non_local() {
 		return;
 	}
 
+	// admin_bar_menu fires on both frontend and admin — must be registered outside
+	// the is_admin() guard, otherwise the Edit Site node survives on frontend views.
+	add_action( 'admin_bar_menu', 'wptba_remove_fse_adminbar', 999 );
+
 	if ( is_admin() ) {
 		add_action( 'admin_menu',            'wptba_remove_fse_menu',          999 );
-		add_action( 'admin_bar_menu',        'wptba_remove_fse_adminbar',      999 );
 		add_action( 'admin_init',            'wptba_block_fse_direct_access'        );
 		add_action( 'admin_enqueue_scripts', 'wptba_deregister_fse_commands'        );
 		add_filter( 'user_has_cap',          'wptba_remove_customize_cap',  10, 3   );
