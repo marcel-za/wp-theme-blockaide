@@ -70,7 +70,8 @@ This file is intentionally kept outside the versioned repo — it is a one-time 
    └── mu-plugins/
        ├── load-theme-blockaide.php   ← create this manually (see above)
        └── wp-theme-blockaide/
-           └── wp-theme-blockaide.php
+           ├── wp-theme-blockaide.php
+           └── lock-fse-non-local.php
    ```
 2. Create `load-theme-blockaide.php` as shown above if it does not already exist.
 3. No activation step required — WordPress loads must-use plugins automatically on the next request.
