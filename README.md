@@ -4,6 +4,12 @@
 
 ---
 
+## Why
+
+The conflict between FSE and file-based deployment workflows is a known architectural tension in WordPress development, documented in [Gutenberg discussion #59480](https://github.com/WordPress/gutenberg/discussions/59480). When a user saves changes in the Site Editor, WordPress writes templates to the database, which silently takes precedence over theme files — breaking Git-based deployment pipelines. Theme Blockaide cuts the Gordian knot by treating FSE as a local-only build tool rather than attempting to sync database state with version-controlled files.
+
+---
+
 ## How it works
 
 WordPress FSE writes templates and template parts to the database when saved via the Site Editor. DB-stored records silently take precedence over theme files, which breaks file-based deployment pipelines (rsync, GitHub Actions, etc.). Theme Blockaide solves this by removing all Site Editor entry points on any environment other than `local`, leaving FSE fully functional for development while locking it down everywhere else.
